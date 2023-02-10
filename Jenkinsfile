@@ -32,7 +32,7 @@ pipeline
               script {
                 openshift.withCluster() {
                   openshift.withProject() {
-                    openshift.newBuild("--name=sample-app-jenkins-new", "--image-stream=openjdk18-openshift:1.14-3", "--binary=true")
+                    openshift.newBuild("--name=sample-app-jenkins-new", "--image-stream-tags=openjdk18-openshift:1.14-3", "--binary=true")
                       openshift.tag("openjdk18-openshift:1.14-3:latest", "openjdk18-openshift:1.14-3:prod") tagging images
                   }
                 }
