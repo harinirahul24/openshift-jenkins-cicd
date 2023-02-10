@@ -10,7 +10,7 @@ pipeline
           {
             steps
              {
-              git branch: 'main', url: 'https://github.com/kuldeepsingh99/openshift-jenkins-cicd.git'
+              git branch: 'main', url: 'https://github.com/harinirahul24/openshift-jenkins-cicd.git'
               script {
                   def pom = readMavenPom file: 'pom.xml'
                   version = pom.version
@@ -32,7 +32,7 @@ pipeline
               script {
                 openshift.withCluster() {
                   openshift.withProject() {
-                    openshift.tags("--name=sample-app-jenkins-new", "--image-stream=openjdk18-openshift:1.14-3", "--binary=true")
+                    openshift.newBuild("--name=sample-app-jenkins-new", "--image-stream=openjdk18-openshift:1.14-3", "--binary=true")
                   }
                 }
               }
